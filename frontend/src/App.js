@@ -25,12 +25,6 @@ class App extends React.Component {
     this.fileUpload = this.fileUpload.bind(this)
   }
 
-  resetState() {
-    this.setState({file: null,
-        prefixSize: 3,
-        outputSize: 500});
-  }
-
   onFormSubmit(e) {
     e.preventDefault()
     if(this.state.file === null) {
@@ -42,11 +36,10 @@ class App extends React.Component {
     .then((response) => {
       console.log(response.data);
       this.setState({output: 'Output ::: ' + response.data, errorText: ''})
-      this.resetState();
     })
     .catch((error) => {
-      this.setState({errorText: "File could not be processed", output:''})
-      this.resetState();
+      console.log(error.response)
+      this.setState({errorText: error.response.data.error, output:''})
     })
   }
 
