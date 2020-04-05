@@ -50,6 +50,16 @@ public class TextGeneratorImplTest {
 	}
 
 	@Test
+	public void testForInvalidOutputSize() {
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("output size cannot be less than zero.");
+
+		textGenerator
+			.generate(ImmutableMap.of(Prefix.of(new LinkedList<>()), HashMultiset.create()), 2,
+				-1);
+	}
+
+	@Test
 	public void testForPrefixWithLengthOne() {
 
 		Multiset<Suffix> suffixes1 = HashMultiset.create();

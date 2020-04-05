@@ -26,6 +26,10 @@ public class TextGeneratorImpl implements TextGenerator {
 			throw new IllegalArgumentException("prefix length must be greater than zero.");
 		}
 
+		if (outputSize < 0) {
+			throw new IllegalArgumentException("output size cannot be less than zero.");
+		}
+
 		StringBuilder text = new StringBuilder();
 
 		Deque<String> prefixes = new LinkedList<>();
@@ -36,7 +40,7 @@ public class TextGeneratorImpl implements TextGenerator {
 		while (!suffix.equals(Suffix.of(EMPTY))) {
 			text.append(suffix.getWord()).append(" ");
 
-			if(text.length() >= outputSize) {
+			if(outputSize > 0 && text.length() >= outputSize) {
 				text = text.delete(outputSize, text.length());
 				break;
 			}

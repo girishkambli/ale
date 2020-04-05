@@ -25,16 +25,28 @@ class App extends React.Component {
     this.fileUpload = this.fileUpload.bind(this)
   }
 
+  resetState() {
+    this.setState({file: null,
+        prefixSize: 3,
+        outputSize: 500});
+  }
+
   onFormSubmit(e) {
     e.preventDefault()
     if(this.state.file === null) {
-      this.setState({errorText:'File not selected'});
+      this.setState({errorText:'No File chosen', output: ''});
       return;
     }
     this.fileUpload(this.state.file, this.state.prefixSize,
-        this.state.outputSize).then((response) => {
+        this.state.outputSize)
+    .then((response) => {
       console.log(response.data);
-      this.setState({output: response.data})
+      this.setState({output: 'Output ::: ' + response.data, errorText: ''})
+      this.resetState();
+    })
+    .catch((error) => {
+      this.setState({errorText: "File could not be processed", output:''})
+      this.resetState();
     })
   }
 
@@ -67,34 +79,34 @@ class App extends React.Component {
   render() {
     return (
         <form onSubmit={this.onFormSubmit}>
-          <Container maxWidth="md">
+          <Container maxWidth="lg">
 
-              <Typography variant="h4" component="h1" gutterBottom>
-                Select text file to upload.
+              <Typography variant="h5" component="h1" gutterBottom>
+                Select .txt file to upload
               </Typography>
               <div>
                 <Button variant="contained" component="label" color="secondary">
                   Upload File
-                  <input type="file" onChange={this.onChange}/>
+                  <input type="file" accept=".txt" onChange={this.onChange}/>
                 </Button>
               </div>
               <div>
-                <TextField label={"Prefix Length"} defaultValue={3}
+                <TextField label="Prefix Count(words)" defaultValue={3}
                            onChange={this.onChangePrefix}/>
               </div>
               <div>
-                <TextField label={"Output Length"} defaultValue={500}
+                <TextField label="OutputSize(chars), Ignore=0" defaultValue={500}
                            onChange={this.onChangeOutput}/>
               </div>
               <div>
                 <Box flexDirection="row" m="2">
                 <Button type={"submit"} variant="contained"
                         color="primary">Submit</Button>
-                <Button  variant="contained"
-                        color="primary">Reset</Button>
                 </Box>
               </div>
-              <div>{this.state.errorText}</div>
+              <div>
+                <Container>{this.state.errorText}</Container>
+              </div>
               <div>
                 <Container>{this.state.output}</Container>
               </div>

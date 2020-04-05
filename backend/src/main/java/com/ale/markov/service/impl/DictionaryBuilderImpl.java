@@ -7,10 +7,10 @@ import com.google.common.base.Strings;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Multiset;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import java.util.stream.IntStream;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +31,7 @@ public class DictionaryBuilderImpl implements DictionaryBuilder {
 			return ImmutableMap.of();
 		}
 
-		input = input.replaceAll("[\\t\\n\\r]+"," ");
+		input = input.replaceAll("[\\t\\n\\r]+", " ");
 		String[] words = input.split(DELIMITER);
 		return build(words, prefix);
 	}
@@ -40,7 +40,7 @@ public class DictionaryBuilderImpl implements DictionaryBuilder {
 
 		Map<Prefix, Multiset<Suffix>> dictionary = new HashMap<>();
 
-		Deque<String> prefixes = new LinkedList<>();
+		Queue<String> prefixes = new LinkedList<>();
 		IntStream.rangeClosed(1, prefixLen).forEach(i -> prefixes.add(EMPTY));
 
 		for (int i = 0; i < words.length; i++) {

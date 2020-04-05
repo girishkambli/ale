@@ -6,12 +6,9 @@ public class Suffix {
 
 	private final String word;
 
-	private int count;
-
 	private Suffix(String word) {
 
 		this.word = word;
-		this.count = 1;
 	}
 
 	public static Suffix of(String word) {
@@ -35,11 +32,6 @@ public class Suffix {
 	public int hashCode() {
 
 		return Objects.hashCode(word);
-	}
-
-	public void increment() {
-
-		++this.count;
 	}
 
 	public String getWord() {
