@@ -2,6 +2,23 @@
 
 This project is an attempt to implement Markov Chain algoritm to transfrom the input text. 
 
+## To run backend tests:
+```
+cd backend
+./mvnw clean test 
+```
+## To run backend:
+```
+cd backend
+./mvnw spring-boot:run
+```
+## To run frontend:
+```
+cd frontend
+npm install
+npm start
+```
+
 This project was time-bound to 4 hours. The work includes:
 1) Research and understand Markov Chains
 2) Design and implement the application to transform input text into new text using Markov Chains algorithm
