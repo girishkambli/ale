@@ -79,7 +79,7 @@ I followed TDD approach, so JUnit tests were ready along with prodcution code. T
 A simple UI was developed using React. Used Material UI for look and feel.
 
 ## Improvements / TODOs
-1) Performance improvements to process large data set. The task to build dictionary could be parallelized if possible.
-2) UI look and feel can be improved.
+1) Performance improvements to process large data set. The task to build dictionary could be parallelized if possible. Use of streams.
+2) UI look and feel can be improved. Error handling can be improved on UI.
 3) Experiment with slight variations in algorithm such as random prefix selection for text generation, or using PriorityQueue as a collection to store suffix groups.
 4) Reactive http using Webflux.
