@@ -12,12 +12,16 @@ cd backend
 cd backend
 ./mvnw spring-boot:run
 ```
+###### URL: http://localhost:9001/v1/transform
+
 ## To run frontend:
 ```
 cd frontend
 npm install
 npm start
 ```
+###### Starts at http://localhost:3000/
+
 
 This project was time-bound to 4 hours. The work includes:
 1) Research and understand Markov Chains
