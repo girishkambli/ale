@@ -78,3 +78,4 @@ A simple UI was developed using React. Used Material UI for look and feel.
 1) Performance improvements to process large data set. The task to build dictionary could be parallelized if possible.
 2) UI look and feel can be improved.
 3) Experiment with slight variations in algorithm such as random prefix selection for text generation, or using PriorityQueue as a collection to store suffix groups.
+4) Reactive http using Webflux.
