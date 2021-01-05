@@ -11,7 +11,7 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/styles": "^4.9.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "clsx": "latest",
     "react": "latest",
     "react-dom": "latest",
